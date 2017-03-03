@@ -10,12 +10,13 @@ var moment = require('moment')
 module.exports = {
 
 	// Endpoint to hit with a user ID when they scan at a HacKSU meeting
+	// TODO: Make this POST-only (leaving it as a GET for debug because appending ?ksu_id= is so easy)
 	scan_flashcard: function(req, res){
 
 		var ksu_id = req.param('ksu_id', false)
 
 		if(ksu_id == false || String(ksu_id).length != 9 || isNaN(ksu_id)){ // Super duper basic KSU ID validation
-			res.badRequest('Invalid KSU ID')
+			res.badRequest({ 'success': false, 'message': 'Invalid KSU ID' })
 		}
 
 		var today = new Date()
@@ -42,7 +43,11 @@ module.exports = {
 			}
 
 			user.save(function(err){
-				res.json(user)
+				res.json({
+					'success': true,
+					'ksu_id': user.ksu_id,
+					'meetings_attended_count': user.meetings_attended_count
+				})
 			})
 
 		})

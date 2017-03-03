@@ -27,11 +27,15 @@ module.exports = {
   	},
 
   	first_name: { // First name (duh)
-  		type: 'string'
+  		type: 'string',
+  		minLength: 2,
+  		maxLength: 20
   	},
 
   	last_name: { // Last name (duh)
-  		type: 'string'
+  		type: 'string',
+  		minLength: 2,
+  		maxLength: 20
   	},
 
   	ksu_email: { // Kent email (just in case we ever need it)
@@ -50,7 +54,9 @@ module.exports = {
   	ksu_id: { // Kent State student ID (for scanning Flashcard)
   		type: 'string', // Technically this will only ever be an integer, but we don't need to index or do any ops on it, so string will be more efficient
   		required: true,
-  		unique: true
+  		unique: true,
+  		minLength: 9,
+  		maxLength: 9
   	},
 
   	password: { // Login password for the management app (hashed, obviously)
@@ -89,6 +95,20 @@ module.exports = {
 
   	hackathons_attended: { // A serialized array of hackathon IDs that the student has attended... this is sort of a temporary way to store the info... if there is interest in expanding on this part of the app, it can be split into it's own schema
   		type: 'array'
+  	},
+
+  	getEmail: function(){
+  		// Don't yell at me about shorthand if syntax; it's unfriendly to new programmers
+  		if(this.email == null){
+  			return this.ksu_email
+  		}
+  		else {
+  			return this.email
+  		}
+  	},
+
+  	getName: function(){
+  		return this.first_name + ' ' + this.last_name
   	}
 
   }
