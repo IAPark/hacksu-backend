@@ -31,6 +31,47 @@ module.exports = {
 
 		var email = req.param('email', null) // Email is optional, so we don't have to do any param checking
 
+		var password = req.param('password', false)
+
+		if(password == false || password.length <= 6 || password.length >= 50){ // Make sure we're given a password (since the model doesn't directly validate this) and do some super basic length checks
+			res.badRequest({ 'success': false, 'message': 'Invalid password' })
+		}
+
+		// TODO: Validate password strength with zxcvbn
+
+		// TODO: Figure out if we want people to write their bios when they first sign up (gut says no because it would take a while)
+
+		var today = new Date()
+
+		User.findOrCreate(
+			{ ksu_id: String(ksu_id) },
+			{
+				ksu_id: String(ksu_id),
+				account_type: 0, // We will update to 1 in the callback
+				joined_hacksu: today,
+				last_attended: null,
+				meetings_attended_count: 0,
+				meetings_attended: [],
+				hackathons_attended_count: 0,
+				hackathons_attended: []
+			}
+		).exec(function(err, user){
+
+			user.first_name = first_name
+			user.last_name = last_name
+			user.ksu_email = ksu_email
+			user.email = email
+			user.new_password = password
+			user.last_seen = today
+
+			user.save(function(err){
+				res.json({
+					'success': (err == null)
+				})
+			})
+
+		})
+
 	}
 
 };

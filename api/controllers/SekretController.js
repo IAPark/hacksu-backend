@@ -29,7 +29,9 @@ module.exports = {
 				joined_hacksu: today,
 				last_attended: today,
 				meetings_attended_count: 0, // We will increment in the callback
-				meetings_attended: [] // We will add today's date in the callback
+				meetings_attended: [], // We will add today's date in the callback
+				hackathons_attended_count: 0,
+				hackathons_attended: []
 			}
 		).exec(function(err, user){
 
@@ -44,7 +46,7 @@ module.exports = {
 
 			user.save(function(err){
 				res.json({
-					'success': true,
+					'success': (err == null),
 					'ksu_id': user.ksu_id,
 					'meetings_attended_count': user.meetings_attended_count
 				})
