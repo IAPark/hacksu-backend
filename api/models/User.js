@@ -15,6 +15,7 @@ module.exports = {
 	  	// Things we might want to store:
 	  	// - Graduation date
 	  	// - Photos for an about page (though we could probably just do {student_id}-{direction}.jpg or whatever)
+	  	// - Social media info (Twitter/GitHub/LinkedIn/whatever) - though this should probably go in another model, this one has gotten messy
 
 	  	account_type: { // Leaving this sort of nebulous allows us to implement a bunch of future logic without a whole lot of work right now
 	  		type: 'integer',
