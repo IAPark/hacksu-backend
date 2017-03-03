@@ -57,6 +57,7 @@ module.exports = {
 			}
 		).exec(function(err, user){
 
+			user.account_type = 1
 			user.first_name = first_name
 			user.last_name = last_name
 			user.ksu_email = ksu_email
