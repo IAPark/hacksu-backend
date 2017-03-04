@@ -1,10 +1,3 @@
-/**
- * SekretController
- *
- * @description :: Private API controller. Probably could have a better name. Oh well.
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
- */
-
 var moment = require('moment')
 
 module.exports = {

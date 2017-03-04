@@ -1,10 +1,3 @@
-/**
- * AdminController
- *
- * @description :: Server-side logic for managing admins
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
- */
-
 module.exports = {
 
   // Get app users (pretty self-explanatory, eh?)
