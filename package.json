@@ -1,8 +1,8 @@
 {
-  "name": "hacksu-leaderboard",
+  "name": "hacksu",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "",
   "keywords": [],
   "dependencies": {
     "bcrypt": "^1.0.2",
@@ -30,10 +30,6 @@
     "start": "node app.js"
   },
   "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Will/hacksu-leaderboard.git"
-  },
-  "author": "Will",
+  "author": "Will Smidlein",
   "license": ""
 }

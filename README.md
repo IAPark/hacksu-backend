@@ -1,3 +1,3 @@
-# hacksu-leaderboard
+# hacksu
 
 a [Sails](http://sailsjs.org) application
