@@ -21,11 +21,17 @@ If the student doesn't have an account, it will create a "partial" account. Thes
 The way we do this is be encouraging everyone to go home to the HacKSU website and sign up for a "full" account. This would allow us to get student names, emails, etc. and link it to the meetings and hackathons they come to. It also gives us an avenue to do voting on session topics, some sort of "show off what I've been working on" space, a place for people to put resumes/social media so that we can connect them with recruiters, etc.
 
 The signup endpoint is a POST to `/users/signup` with the following params:
+
 `ksu_id`: **Required** The student's Kent state ID (which is how we link flashcards to full user accounts)
+
 `first_name`: **Required** The student's first name (duh)
+
 `last_name`: **Required** The student's last name (duh)
+
 `ksu_email`: **Required** This will be super useful in the future if we ever start working directly with Kent State and they give us access to some private endpoint to connect with Flashline... I know they use the [username]@kent.edu as a primary key in a bunch of places, so it can't hurt for us to have. Also a good way to make sure we have at least 1 email on file for every student.
+
 `email`: **Optional** The student's personal email. This is what we'll default to sending notification/recruiter/whatever emails to, since some people don't use their KSU emails.
+
 `password`: **Required** In _theory_ we could hit a Flashline auth endpoint directly and allow students to just auth with their Flashline credentials, but I'd definitely want to talk to the Flashline team before implementing that. Also seems like a security nightmare... no way to verify that creds aren't being stored in plaintext in transit.
 
 Both endpoints are setup such that the will gracefully update/create where needed... this means that if somebody goes to the site and creates and account before they scan their Flashcard at a meeting, it's no big deal, and when they do come to a meeting, that will get logged in their existing account. Same vice versa.
