@@ -15,7 +15,7 @@ module.exports = {
 			res.badRequest({ 'success': false, 'message': 'Invalid KSU ID' })
 		}
 
-		var key = req.param('ksu_id', false)
+		var key = req.param('key', false)
 
 		if(key != sails.config.sekret.key && sails.config.environment != 'development'){
 			pass = false
