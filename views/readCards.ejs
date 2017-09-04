@@ -1,0 +1,92 @@
+<style>
+    .hacksuCardRead {
+        font-family: sans-serif;
+        
+    }
+    #banner {
+        height: 60px;
+        width: 120%;
+        margin-left: -20px;
+        padding: 10px;
+        border-bottom: solid 1px lightGray;
+        background: linear-gradient(to bottom, #ffffff, #eeeeee);
+    }
+    #icon {
+        margin-left: 20px;
+        height: 50px;
+    }
+    .textContainer {
+        padding: 40px;
+    }
+    input {
+        border: none;
+        height: 16px;
+        width: 300px;
+        font-size: 16px;
+        border-bottom: solid lightGray;
+        float: right;
+    }
+    input:focus {
+        outline: none;
+        border-bottom: solid lightblue;
+        
+    }
+    #personDetails {
+        max-width: 500px;
+    }
+    p {
+        min-width: 500px;
+    }
+    button {
+        width: 150px;
+        height: 40px;
+        font-size: 13px;
+        background: linear-gradient(to bottom, #ffffff, #eeeeee);
+        border: solid lightGray;
+        float: right;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function cardSwipe() {
+        var info = document.getElementById('swipeInfo').value;
+        if (info[0] != '%' || info.length < 15) {
+            alert("Unable to process swipe!");
+            return false;
+        }
+        alert("Accepted:" + info);
+    }
+    
+</script>
+
+<div class="hacksuCardRead">
+    <div id="banner">
+        <img id="icon" src="/images/hacksu.png">
+    
+    </div>
+    <div class="textContainer">
+        <h1>Welcome to Hacksu!</h1>
+        <h3>Swipe your flashcard, or manually log in or register below.</h3>
+        <h3>Login:</h3>
+        <form id="personDetails">
+            <p>Email: <input id="ksu_email_login" placeholder="username@kent.edu"> </p>
+            <p>Password: <input id="password" type="password" placeholder="Password"> </p>
+            <button>Submit!</button>
+        </form><br><br>
+        
+        <br><br>
+        
+        <h3>Register</h3>
+        <form id="personDetails">
+            <p>First Name: <input id="first" placeholder="First"> </p>
+            <p>Last Name: <input id="last" placeholder="Last"> </p>
+            <p>KSU Email: <input id="ksu_email" placeholder="username@kent.edu"> </p>
+            <p>Alternate Email (optional): <input id="ksu_email" placeholder="username@whatever.com"> </p>
+            <button>Submit!</button>
+        </form><br><br>
+        <form id="cardswipe" onsubmit="cardSwipe()">
+            <p><input style="opacity:.5;" id="swipeInfo" type="password" placeholder="Click to listen for card swipes" autofocus> </p>
+        </form>
+        
+    </div>
+</div>
