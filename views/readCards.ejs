@@ -54,10 +54,24 @@
             alert("Unable to process swipe!");
             return false;
         }
+        info = info.split('?')[0];
+        //switch functions to check users before creating
+        //if info exists, User.update instead of User.create
+        User.create({ksu_id:info});
+        console.log(User.find({ksu_id:info}));
+        /*User.find({ksu_id:info}).exec(function (err, info){
+            if(err) {
+                alert("Did not log");
+            }
+            else {
+                alert("id logged successfully");
+            }
+        })*/
         alert("Accepted:" + info);
     }
     
 </script>
+
 
 <div class="hacksuCardRead">
     <div id="banner">
@@ -70,7 +84,7 @@
         <h3>Login:</h3>
         <form id="personDetails">
             <p>Email: <input id="ksu_email_login" placeholder="username@kent.edu"> </p>
-            <p>Password: <input id="password" type="password" placeholder="Password"> </p>
+            <p>Password: <input id="password_login" type="password" placeholder="Password"> </p>
             <button>Submit!</button>
         </form><br><br>
         
@@ -80,13 +94,16 @@
         <form id="personDetails">
             <p>First Name: <input id="first" placeholder="First"> </p>
             <p>Last Name: <input id="last" placeholder="Last"> </p>
+            <p>Password: <input id= password type="password" placeholder="Password"></p>
             <p>KSU Email: <input id="ksu_email" placeholder="username@kent.edu"> </p>
             <p>Alternate Email (optional): <input id="ksu_email" placeholder="username@whatever.com"> </p>
+            <p>KSU ID: <input id="ksu_id" placeholder="810000001"></p>
             <button>Submit!</button>
+            <!--implement on submit function-->
         </form><br><br>
-        <form id="cardswipe" onsubmit="cardSwipe()">
             <p><input style="opacity:.5;" id="swipeInfo" type="password" placeholder="Click to listen for card swipes" autofocus> </p>
-        </form>
+            <button onclick="cardSwipe()">submit lol</button>
+       
         
     </div>
 </div>
